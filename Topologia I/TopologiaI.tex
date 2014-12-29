@@ -1462,7 +1462,7 @@ Bien, si tenemos que $φ_1(a)  > 0$, entonces $a<1$, y por continuidad $∃δ>0$
 
 Por otro lado, si $t<a$, entonces $∃s∈I$ luego $φ_1(t) > 0$.
 
-Si hacemos que $t$ converja a $a$ por la izquierda, entonces $φ_1(t) \diagdown φ_1(a) = 0$. Pero si $t<a$, entonces $φ(t) = \left(φ_1(t), \sin\left(\frac{1}{φ_1(t)}\right)\right)$ oscila entre $-1$ y $1$, luego el límite $\lim_{t\to a^-}φ(t)$ no existe.\footnote{Aquí no sé qué puñetas he escrito.}
+Si hacemos que $t$ converja a $a$ por la izquierda, entonces $φ_1(t) \diagdown φ_1(a) = 0$. Pero si $t<a$, entonces $φ(t) = \left(φ_1(t), \sin\left(\frac{1}{φ_1(t)}\right)\right)$ oscila entre $-1$ y $1$, luego el límite $\lim_{t\to a^-}φ(t)$ no existe.\footnote{Esto habría que explicarlo mejor.}
 
 \subsubsection{Componentes conexas por caminos}
 
@@ -1824,7 +1824,7 @@ Vamos a usar la proposición anterior. Si $J⊆ℕ$ es finito, entonces  \[ \big
 	Esto implica que el diámetro de $W = \sup d(x,y) ≤ d(x_0,y_0)< \infty$
 	\end{enumerate}
 
-\obs $a\implies b $ vale para cualquier espacio topológico $\to$ revisar la demostración ya sólo usa la definición de compacidad.\footnote{What.}
+\obs $a\implies b $ vale para cualquier espacio topológico $\to$ revisar la demostración ya sólo usa la definición de compacidad.\footnote{Desarrollar algo más esto estaría bien.}
 
 \end{proof}
 
@@ -1855,7 +1855,7 @@ Afirmamos que entonces $x_n \convs x$. Si tomamos $ε>0$, queremos saber si $∃
 
 Por tener la subsucesión convergente, sabemos que $∃k_ε$ tal que $∀k≥k_ε\; \dst(x, x_{n_k}) < \frac{ε}{2}$.
 
-Por ser $\{x_n\}$ de Cauchy, podemos encontrar otro $n_ε$ tal que $∀n,m ≥ n_ε\; \dst(x_n, x_m) < \frac{ε}{2}$. Como $n_k$ tiende a infinito, entonces $∃\hat{k}_ε > k_ε\; n_{\hat{k}_ε} ≥ n_ε$. Si $n≥n_ε$ entonces $\dst(x, x_n) ≤ \dst(x, x_{n_{\hat{k}_ε}}) + \dst(x_{n_{\hat{k}_ε}}, x_n) < ε$ y ya tenemos lo que queríamos demostrar.\footnote{Aquí me ha bailado algún subíndice sssssssseguro.}
+Por ser $\{x_n\}$ de Cauchy, podemos encontrar otro $n_ε$ tal que $∀n,m ≥ n_ε\; \dst(x_n, x_m) < \frac{ε}{2}$. Como $n_k$ tiende a infinito, entonces $∃\hat{k}_ε > k_ε\; n_{\hat{k}_ε} ≥ n_ε$. Si $n≥n_ε$ entonces $\dst(x, x_n) ≤ \dst(x, x_{n_{\hat{k}_ε}}) + \dst(x_{n_{\hat{k}_ε}}, x_n) < ε$ y ya tenemos lo que queríamos demostrar.\footnote{Aquí me ha bailado algún subíndice casi seguro.}
 \end{proof}
 
 ¿Para qué nos sirve esto? Veámoslo. Tomemos \sdst un espacio métrico, $K⊆X$ compacto y $x∈K^c$. Entonces \[ \dst(x, K) ≝ \inf\{\dst(x,y) \tq y ∈ K\}\]
@@ -2421,7 +2421,7 @@ siendo ``$×$'' el producto de grupos usual, esto es, con la operación $(a_1, a
 \begin{proof}
 Si $X_1, X_2$ son cpc, entonces $X_1×X_2$ también lo es. También sabemos que si tenemos una aplicación \[ \appl{φ}{[0,1]}{X_1×X_2}\] continua entonces tienen que ser sus componentes $φ_1, φ_2$ continuas.
 
-Más: si $(φ_1, φ_2) = φ\dfm ψ = (ψ_1, ψ_2)$, entonces tiene que ser $φ_1\dfm ψ_1$ y $φ_2 \dfm ψ_2$. \footnote{Ha llenado media pizarra en un segundo y a partir de aquí no sé qué escribo.}
+Más: si $(φ_1, φ_2) = φ\dfm ψ = (ψ_1, ψ_2)$, entonces tiene que ser $φ_1\dfm ψ_1$ y $φ_2 \dfm ψ_2$.
 
 Entonces si tenemos una deformación \[ \appl{F}{[0,1]×[0,1]}{X_1×X_2}\] continua, se cumple que $φ\dfm ψ$ por $F$ si y sólo si $φ_1\dfm ψ_1$, $φ_2\dfm ψ_2$ por $F_1$ y $F_2$ respectivamente.  Así, por último,
 
@@ -2603,7 +2603,7 @@ Si movemos ``un poquito'' $x$, $r(x)$ se nos quedará ``cerca''. Si escribimos $
 
 ¿Qué condiciones cumple $λ(x)$? Como poco, tiene que ser $λ(x) ≥ 1$, y además $\md{r(x)^2} = 1$.
 
-Afirmamos que $λ$ es continua: operando con la condición de antes, $\md{r(x)^2}$, nos queda\footnote{No pienso copiar ese monstruo. Es continua y os lo creéis.} \[ λ(x) = \frac{-2f(x) ·(x-f(x)) \pm \sqrt{4 \left(f(x) ·(x - f(x))\right)^2 adasdasd}}{asdasdasd} \] y nos quedamos con la mayor, la de la suma.
+Afirmamos que $λ$ es continua: operando con la condición de antes, $\md{r(x)^2}$, nos queda un pequeño monstruo que es continua \[ λ(x) = \frac{-2f(x) ·(x-f(x)) \pm \sqrt{4 \left(f(x) ·(x - f(x))\right)^2 adasdasd}}{asdasdasd} \] y nos quedamos con la mayor, la de la suma.
 
 En ese caso, como λ es continua, $r$ también lo sería, sería un retracto y tendríamos una contradicción.\footnote{Habría que completar bien esta prueba.}
 \end{proof}
@@ -2639,7 +2639,7 @@ Para hacer las operaciones de grupos, simplemente hacemos la multiplicación usu
 \label{figFlor}
 \end{figure}
 
-Otro grupo libre que podemos estudiar es el grupo fundamental de la ``flor de tres pétalos''\footnote{Biba la precisión matemática.} (figura \ref{figFlor}), que podremos imaginar que se llama $F_3$. De nuevo, las expresiones serán de la forma \[ a^{n^1}b^{m^1}c^{l_1} \dotsb \], con $n_i, m_i, l_i ∈ ℤ$, y dos de esas expresiones representan el mismo elemento de $F_3$ si se puede pasar de una a otra usando las reglas de antes:
+Otro grupo libre que podemos estudiar es el grupo fundamental de la ``flor de tres pétalos'' (figura \ref{figFlor}), que podremos imaginar que se llama $F_3$. De nuevo, las expresiones serán de la forma \[ a^{n^1}b^{m^1}c^{l_1} \dotsb \], con $n_i, m_i, l_i ∈ ℤ$, y dos de esas expresiones representan el mismo elemento de $F_3$ si se puede pasar de una a otra usando las reglas de antes:
 
 \begin{itemize}
 	\item $a^0 = b^0 = c^0 = 1$.
