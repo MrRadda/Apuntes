@@ -89,16 +89,16 @@ Vamos a definir ahora el cierre, aunque sólo como notación:
 
 \begin{enumerate}
 \item $A⊆X$ es abierto en \sdst si $∀x∈A\; ∃δ=δ_x > 0$ tal que $\bola(x,δ_x) ⊆ A$.
-\item La familia de abiertos es $\topl_d \equiv \{ A ⊆ X \tq A\, \text{abierto} \}$.
+\item La familia de abiertos es $\topl_{\dst} \equiv \{ A ⊆ X \tq A\, \text{abierto} \}$.
 \end{enumerate}
 \end{defn}
 
 La familia de abiertos que acabamos de definir es una \concept[Topología]{topología}, y cumple las siguientes propiedades.
 
 \begin{enumerate}
-\item $\emptyset, X ∈ \topl_d$.
-\item $A,B ∈ \topl_d \implies A \cap B ∈ \topl_d$.
-\item $A_j ∈ \topl_d\; ∀j∈ J \implies \bigcup_{j∈J} A_j ∈ \topl_d$
+\item El total y el vacío son siempre abiertos: $\emptyset, X ∈ \topl_{\dst}$.
+\item La intersección de dos conjuntos abiertos es abierta: $A,B ∈ \topl_{\dst} \implies A \cap B ∈ \topl_{\dst}$.
+\item La unión \textit{numerable} de conjuntos abiertos es abierta: $A_j ∈ \topl_{\dst}\; ∀j∈ J \implies \bigcup_{j∈J} A_j ∈ \topl_{\dst}$.
 \end{enumerate}
 
 Demostremos las dos últimas propiedades:
@@ -137,7 +137,7 @@ También podemos definir el conjunto cerrado:
 Dado un espacio topológico \stopl, $F⊆X$ es cerrado si y sólo si $F^C \equiv X \setminus F$ es abierto.
 \end{defn}
 
-Podemos definir dos topologías "comunes", por así decirlo, las obvias para cualquier conjunto. Tenemos la \concept[Topología!trivial]{topología\IS trivial} (el mínimo) dada por \[ \topl_{triv.} = \{ \emptyset, X \} \], y la \concept[Topología!discreta]{topología\IS discreta}, que sería el máximo: \[ \topl_{disc.} = \parts{X} \].
+Podemos definir dos topologías "comunes", por así decirlo, las obvias para cualquier conjunto. Tenemos la \label{defTopologiaTrivial}\concept[Topología!trivial]{topología\IS trivial} (el mínimo) dada por \[ \topl_{triv.} = \{ \emptyset, X \} \], y la \concept[Topología!discreta]{topología\IS discreta}, que sería el máximo: \[ \topl_{disc.} = \parts{X} \].
 
 Y volviendo a nuestro bonito mundo de los reales, tenemos las \concept[Topología\IS usual]{topologías usuales} en $ℝ^m$ o $\topl_{ℝ^m}$. Para $m=1$, diremos que \[ A ∈ \topl_ℝ ≝ ∀x∈A\; ∃a,b∈ℝ \tq x∈ (a,b) ⊆ A \] Esto es, que siempre podemos encontrar un intervalo contenido en $A$ que a su vez contenga a $x$. Equivalentemente, $A$ será una unión de intervalos abiertos.
 
@@ -194,7 +194,7 @@ Sea $X$ un conjunto y $\base$ una familia de subconjuntos de $X$ (e.d. $\base �
 \end{defn}
 
 
-\begin{defn}[Topología\IS generada por una base] \label{TopologiaGeneradaBase} La topología $\topl_\base$ se define por \[ A ∈ \topl_\base \iff ∀x ∈ A\; \exists B∈\base \tq x∈B⊆A \]
+\begin{defn}[Topología\IS generada por una base] \label{defTopologiaGeneradaBase} La topología $\topl_\base$ se define por todos los conjuntos formados por unión de elementos de la base. Formalmente: \[ A ∈ \topl_\base \iff ∀x ∈ A\; \exists B∈\base \tq x∈B⊆A \]
 \end{defn}
 
 Tenemos que demostrar, eso sí, que eso que hemos definido ahí es realmente una topología.
@@ -235,6 +235,13 @@ La implicación a la izquierda se resuelve por la primera parte de esta proposic
 
 Ahora que ya sabemos cómo generar una topología a partir de una base, podemos hacernos una pregunta. Consideramos una serie de conjuntos que queremos que sean abiertos en nuestro espacio. Obviamente, la topología discreta cumple lo que buscamos, pero, ¿hay una topología más pequeña? ¿Cuál es la topología \textit{"mínima"}?
 
+\begin{defn}[Topología\IS generada por un conjunto] Sea $X$ un conjunto y $\mathcal{D} ⊆ \parts{X}$ una familia de subconjuntos de $X$. Entonces la topología generada por $\mathcal{D}$ está formada por todas las posibles uniones de intersecciones finitas de conjuntos de $\mathcal{D}$. Es decir, que si $\mathcal{S}$ es el conjunto de todas las intersecciones finitas
+\[ \mathcal{S} = \set{\bigcap_{D ∈ A} D \tq A ⊆ \mathcal{D}, D \text{ finito} } \]
+entonces la topología $\topl_\mathcal{D}$ es
+\[ \topl_\mathcal{D} = \set{\bigcup_{D ∈ B} D \tq B ⊆ \mathcal{S}} \]
+\label{defTopologiaGenerada}
+\end{defn}
+
 \begin{prop} Sea $X$ un conjunto. \label{propTopologiaMinima}
 
 \begin{enumerate}
@@ -268,7 +275,19 @@ Hasta ahora hemos visto cómo generar topologías a partir de la distancia, y ta
 \end{enumerate}
 \end{defn}
 
-Dado un conjunto $X$ y un orden total $<$ se puede construir una topología $\topl_<$ de la misma forma que en $ℝ$: intervalos $(a,b)$. Empecemos con ejemplos.
+Dado un conjunto $X$ y un orden total $<$ se puede construir una topología $\topl_<$ de la misma forma que en $ℝ$: intervalos $(a,b)$ incluyendo los bordes. Veamos primero la definición formal
+
+\begin{defn}[Topología\IS del orden] Dado un conjunto $X$ y un orden total $<$, la topología $\topl_<$ está generada por el conjunto de ``rayos'', esto es, los intervalos
+
+\begin{gather*}
+(a, ∞) = \set{x ∈ X \tq x > a} \\
+(-∞, b) = \set{x ∈ X \tq x < b}
+\end{gather*}
+
+Así, los abiertos en la topología del orden son (ver definición de topología generada por un conjunto, \ref{defTopologiaGenerada}) los intervalos de la forma $(a, ∞), (-∞, b)$ y su intersección, intervalos de la forma $(a,b)$.\label{defTopologiaOrden}
+\end{defn}
+
+Empecemos con ejemplos.
 
 \paragraph{Orden lexicográfico en $ℝ^2$} Este ejemplo es una topología muy visual (ver la figura \ref{figOrdenLex}), importante y rara. Empezamos definiendo qué es ese orden
 
@@ -317,6 +336,8 @@ En esta topología, el abierto más sencillo que contiene a un punto "en el medi
 \caption{Intervalos más sencillos en $[\mathbbold{0}, \mathbbm{1}]_{Lex}$.}
 \label{figIntervalosLex}
 \end{figure}
+
+Hay que tener en cuenta que los intervalos cerrados en los bordes $[(0,0), (a, b))$ o $((a,b), (1,1)]$ también son abiertos (ver definición formal de topología del orden, \ref{defTopologiaOrden})
 
 Más ejemplos: ¿una bola $A$ en el sentido habitual (ver figura \ref{figBolaLex}) de $ℝ^2$ es abierto en esta topología? Efectivamente: podemos expresarlo como unión de abiertos de la topología, las líneas verticales.
 
@@ -716,7 +737,7 @@ Sea \stopl un espacio topológico y $S⊆X$. Entonces
 	\item $\base_S \equiv \{B∩S : B\in \base\}$ es una base para una topología en $S$
 	\item $\topl^{sub} = \topl_{\base_S}$
 	\end{enumerate}
-\item Si $\topl = \topl_d$ es la topología inducida por una distancia $\dst(x,y)$ en $X$, entonces $\topl^{sub} = \topl_{\dst|_{S×S}}$, tomando $\dst|_{S×S}$ como la restricción de la distancia al conjunto $S$:
+\item Si $\topl = \topl_{\dst}$ es la topología inducida por una distancia $\dst(x,y)$ en $X$, entonces $\topl^{sub} = \topl_{\dst|_{S×S}}$, tomando $\dst|_{S×S}$ como la restricción de la distancia al conjunto $S$:
 \begin{align*}
 	\appl{\dst|_{S×S}}{S×S&}{[0,\infty)} \\
 	(x,y)&\longmapsto \dst(x,y)
@@ -1015,7 +1036,7 @@ Empecemos con un ejemplo. Si consideramos $A=(-1, 0) ∪ (1,0)$ y $B=(2,3)$, vem
 	Sea $(X, \topl)$ un espacio topológico. Tenemos 2 definiciones:
 
 	\begin{enumerate}
-		\item $X$ es conexo si no existen $V_1, V_2$ abiertos $(V_i \in \topl)$ tales que $V_1 \cap V_2 = \emptyset$, $V_1 \cup V_2 = X$, y $V_1 ≠ \emptyset ≠ V_2$. Análogamente, $X$ es no conexo si existen esos intervalos $V_1,V_2, \ldots$ que cumplan esas condiciones.
+		\item $X$ es conexo si no existen $V_1, V_2$ abiertos $(V_i \in \topl)$ tales que $V_1 \cap V_2 = \emptyset$, $V_1 \cup V_2 = X$, y $V_1 ≠ \emptyset ≠ V_2$. Análogamente, $X$ es no conexo si existen esos abiertos $V_1,V_2, \ldots$ que cumplan esas condiciones.
 
 		\item Sea $W ⊆ X$, $W$ es conexo si y sólo si $(W, \topl_X^{sub})$ es conexo.
 	\end{enumerate}
@@ -1468,7 +1489,7 @@ Si hacemos que $t$ converja a $a$ por la izquierda, entonces $φ_1(t) \diagdown 
 
 Vamos a definirlas de forma análoga a como lo hicimos con las componentes conexas, primero con una relación de equivalencia.
 
-\begin{defn} Sea $(X, \topl)$ un espacio topológico. Entonces \[ x\rel y ≝ ∃\appl{φ}{[0,1]}{X}\] continua y tal que $φ(0) = x$, $φ(1) = y$.
+\begin{defn} Sea $(X, \topl)$ un espacio topológico. Entonces $x\rel y$ si y sólo si existe una aplicación $\appl{φ}{[0,1]}{X}$ continua y tal que $φ(0) = x$, $φ(1) = y$.
 \end{defn}
 
 Esa $\rel$ que acabamos de definir es relación de equivalencia, y no hace falta demostrarlo porque es muy sencillo.
@@ -1644,7 +1665,7 @@ Lo malo es que usar la definición es un poco pesado para demostrar la compacida
 
 	Sea $x∉W$. Buscamos un entorno que no corte a $W$. Si cogemos un $y∈W$, por ser Hausdorff podríamos coger entornos que no se corten, pero no sabemos si el entorno de $x$ cortaría a $W$, y no queremos eso. Tenemos que usar el hecho de que $W$ es compacto.
 
-	Para todo $y∈W$ distinto de $x$, por ser $X$ Hausdorff existen $U_y, V_y$ abiertos tales que $x∈U_y, y∈V_y$ y con $U_y ∩ V_y$. Claramente, $W⊆\bigcup V_y$.
+	Para todo $y∈W$ distinto de $x$, por ser $X$ Hausdorff existen $U_y, V_y$ abiertos tales que $x∈U_y, y∈V_y$ y con $U_y ∩ V_y = ∅$. Claramente, $W⊆\bigcup V_y$.
 
 	Como $W$ es compacto, $∃y_1, y_2, \dotsc, y_n$ tal que $W⊆V_{y_1} ∪ \dotsb ∪ V_{y_m}$, es decir, existe un SRF. Sea $U = U_{y_1} ∩ U_{y_w} ∩ \dotsb ∩ U_{y_m}$ el entorno contenido en todos los entornos de $x$ correspondientes a cada $y_i$, que es abierto por ser intersección de un número finito de abiertos. Como $x∈U$, entonces \[ U ∩ W = U ∩ (V_{y_1} ∪ \dotsb ∪ V_{y_m}) = (U ∩ V_{y_1}) ∪ \dotsb ∪ (U∩V_{y_m}) = ∅ \] ya que la intersección por pares es vacía. Luego $x∉\adh{W}$ y ya está lo que queríamos demostrar.
 
@@ -1810,7 +1831,7 @@ Vamos a usar la proposición anterior. Si $J⊆ℕ$ es finito, entonces  \[ \big
 
 	Demostración:
 
-	1) $(X,d) \overset{\topl_d}{ \to}$ Hausdorff $\overset{compacto}{\implies} W$ es cerrado.
+	1) $(X,d) \overset{\topl_{\dst}}{ \to}$ Hausdorff $\overset{compacto}{\implies} W$ es cerrado.
 
 	2) $\appl{d}{W×W}{ℝ}$ es continua y como $W×W$ es compacto $\implies d$ alcanza un máximo, es decir $∃x_0,y_0 ∈W \tq d(x,y) ≤ d(x_0,y_0) ∀x,y ∈W$.
 
